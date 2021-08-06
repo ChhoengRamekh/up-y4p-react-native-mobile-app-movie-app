@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-movies24-dev-213850-authRole",
+      "UnauthRoleArn": "arn:aws:iam::416146529076:role/amplify-movies24-dev-213850-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::416146529076:role/amplify-movies24-dev-213850-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-movies24-dev-213850-deployment",
+      "UnauthRoleName": "amplify-movies24-dev-213850-unauthRole",
+      "StackName": "amplify-movies24-dev-213850",
+      "StackId": "arn:aws:cloudformation:us-east-1:416146529076:stack/amplify-movies24-dev-213850/df576d50-f5fa-11eb-964d-0ea3835b933d",
+      "AmplifyAppId": "d1caz2h7ap5k0p"
+    },
+    "categories": {
+      "auth": {
+        "movies24c98e3ba8": {}
+      }
+    }
+  }
+}
