@@ -1,0 +1,38 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-movies24-dev-213850-authRole",
+      "UnauthRoleArn": "arn:aws:iam::416146529076:role/amplify-movies24-dev-213850-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::416146529076:role/amplify-movies24-dev-213850-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-movies24-dev-213850-deployment",
+      "UnauthRoleName": "amplify-movies24-dev-213850-unauthRole",
+      "StackName": "amplify-movies24-dev-213850",
+      "StackId": "arn:aws:cloudformation:us-east-1:416146529076:stack/amplify-movies24-dev-213850/df576d50-f5fa-11eb-964d-0ea3835b933d",
+      "AmplifyAppId": "d1caz2h7ap5k0p"
+    }
+  },
+  "auth": {
+    "movies24c98e3ba8": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-movies24-dev-213850-deployment/amplify-cfn-templates/auth/movies24c98e3ba8-cloudformation-template.yml",
+        "logicalId": "authmovies24c98e3ba8"
+      },
+      "lastPushTimeStamp": "2021-08-05T15:43:00.638Z",
+      "output": {
+        "UserPoolId": "us-east-1_8nJHZgffZ",
+        "AppClientIDWeb": "730i71nr6ft6shdnm96f4uqbup",
+        "AppClientID": "6o0k35sl229cdh2cihqs2th7j1",
+        "IdentityPoolId": "us-east-1:bd8c339b-e0cc-4aec-b225-7fb70f0906b2",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:416146529076:userpool/us-east-1_8nJHZgffZ",
+        "IdentityPoolName": "movies24c98e3ba8_identitypool_c98e3ba8__dev",
+        "UserPoolName": "movies24c98e3ba8_userpool_c98e3ba8"
+      },
+      "lastPushDirHash": "bt8ifyT0kVlZrmT19LCuWSdDrSI="
+    }
+  }
+}

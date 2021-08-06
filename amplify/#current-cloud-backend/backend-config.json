@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "movies24c98e3ba8": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
