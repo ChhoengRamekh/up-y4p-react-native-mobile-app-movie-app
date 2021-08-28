@@ -35,7 +35,7 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Coming_Soon"
+        name="Coming Soon"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => (
@@ -75,7 +75,7 @@ function HomeNavigator() {
       <HomeStack.Screen
         name="HomeScreen"
         component={HomeScreen}
-        options={{ headerTitle: "Tab One Title" }}
+        options={{ headerTitle: "Movie24" }}
       />
       <HomeStack.Screen
         name="MovieDetailsScreen"
@@ -92,9 +92,9 @@ function TabTwoNavigator() {
   return (
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
-        name="TabTwoScreen"
+        name="ComingSoon"
         component={TabTwoScreen}
-        options={{ headerTitle: "Tab Two Title" }}
+        options={{ headerTitle: "Comming Soon" }}
       />
     </TabTwoStack.Navigator>
   );
