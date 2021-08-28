@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "movies24",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authmovies24c98e3ba8",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
