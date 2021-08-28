@@ -11,9 +11,17 @@ import * as React from "react";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import HomeScreen from "../screens/HomeScreen";
-import MovieDetailsScreen from "../screens/MovieDetailsScreen"
-import TabTwoScreen from "../screens/TabTwoScreen";
-import { BottomTabParamList, HomeParamList, TabTwoParamList } from "../types";
+import MovieDetailsScreen from "../screens/MovieDetailsScreen";
+import Profile from "../screens/Profile/Profile";
+import SearchScreen from "../screens/SearchScreen";
+import DownloadScreen from "../screens/DownloadScreen";
+import {
+  BottomTabParamList,
+  HomeParamList,
+  TabTwoParamList,
+  SearchParamList,
+  DownloadParamList,
+} from "../types";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -35,17 +43,8 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Coming Soon"
-        component={TabTwoNavigator}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <MaterialIcons name="video-library" size={24} color={color} />
-          ),
-        }}
-      />
-      <BottomTab.Screen
         name="Search"
-        component={TabTwoNavigator}
+        component={SearchNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="search" size={24} color={color} />
@@ -54,10 +53,19 @@ export default function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Downloads"
-        component={TabTwoNavigator}
+        component={DownloadNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <AntDesign name="download" size={24} color={color} />
+            <AntDesign name="clouddownload" size={24} color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="account-circle" size={24} color={color} />
           ),
         }}
       />
@@ -80,7 +88,7 @@ function HomeNavigator() {
       <HomeStack.Screen
         name="MovieDetailsScreen"
         component={MovieDetailsScreen}
-        options={{ title: 'Movie Detail' }}
+        options={{ title: "Movie Detail" }}
       />
     </HomeStack.Navigator>
   );
@@ -97,5 +105,33 @@ function TabTwoNavigator() {
         options={{ headerTitle: "Comming Soon" }}
       />
     </TabTwoStack.Navigator>
+  );
+}
+
+const SearchStack = createStackNavigator<SearchParamList>();
+
+function SearchNavigator() {
+  return (
+    <SearchStack.Navigator>
+      <SearchStack.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{ headerTitle: "Search Movie" }}
+      />
+    </SearchStack.Navigator>
+  );
+}
+
+const DownloadStack = createStackNavigator<DownloadParamList>();
+
+function DownloadNavigator() {
+  return (
+    <DownloadStack.Navigator>
+      <DownloadStack.Screen
+        name="Search"
+        component={DownloadScreen}
+        options={{ headerTitle: "Search Movie" }}
+      />
+    </DownloadStack.Navigator>
   );
 }

@@ -24,6 +24,14 @@ export type TabTwoParamList = {
   TabTwoScreen: undefined;
 };
 
+export type SearchParamList = {
+  SearchScreen: undefined;
+};
+
+export type DownloadParamList = {
+  DownloadScreen: undefined;
+};
+
 export type Episode = {
   id: string,
   title: string,
