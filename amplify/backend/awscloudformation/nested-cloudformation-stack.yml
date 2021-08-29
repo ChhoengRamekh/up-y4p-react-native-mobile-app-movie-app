@@ -124,7 +124,7 @@
       "Properties": {
         "TemplateURL": "https://s3.amazonaws.com/amplify-movies24-dev-213850-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "Parameters": {
-          "CreateAPIKey": 1,
+          "CreateAPIKey": 0,
           "AppSyncApiName": "movies24",
           "DynamoDBBillingMode": "PAY_PER_REQUEST",
           "DynamoDBEnableServerSideEncryption": false,
@@ -135,7 +135,7 @@
             ]
           },
           "S3DeploymentBucket": "amplify-movies24-dev-213850-deployment",
-          "S3DeploymentRootKey": "amplify-appsync-files/09c1028ec94b70b951b6a2cd9a8459b3f884f928",
+          "S3DeploymentRootKey": "amplify-appsync-files/e59baac805e574a85b30ba1fcae9ca95e6a12f85",
           "env": "dev"
         }
       }

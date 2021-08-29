@@ -17,6 +17,8 @@ export const onCreateCategory = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -50,6 +52,8 @@ export const onUpdateCategory = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -83,6 +87,8 @@ export const onDeleteCategory = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -112,6 +118,8 @@ export const onCreateMovie = /* GraphQL */ `
       plot
       cast
       creator
+      video
+      trailer
       categoryID
       seasons {
         items {
@@ -146,6 +154,8 @@ export const onUpdateMovie = /* GraphQL */ `
       plot
       cast
       creator
+      video
+      trailer
       categoryID
       seasons {
         items {
@@ -180,6 +190,8 @@ export const onDeleteMovie = /* GraphQL */ `
       plot
       cast
       creator
+      video
+      trailer
       categoryID
       seasons {
         items {
@@ -218,6 +230,8 @@ export const onCreateSeason = /* GraphQL */ `
         plot
         cast
         creator
+        video
+        trailer
         categoryID
         seasons {
           nextToken
@@ -270,6 +284,8 @@ export const onUpdateSeason = /* GraphQL */ `
         plot
         cast
         creator
+        video
+        trailer
         categoryID
         seasons {
           nextToken
@@ -322,6 +338,8 @@ export const onDeleteSeason = /* GraphQL */ `
         plot
         cast
         creator
+        video
+        trailer
         categoryID
         seasons {
           nextToken
@@ -382,6 +400,8 @@ export const onCreateEpisode = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -430,6 +450,8 @@ export const onUpdateEpisode = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -478,6 +500,8 @@ export const onDeleteEpisode = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -486,6 +510,246 @@ export const onDeleteEpisode = /* GraphQL */ `
           updatedAt
         }
         episodes {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateDownload = /* GraphQL */ `
+  subscription OnCreateDownload {
+    onCreateDownload {
+      id
+      title
+      poster
+      duration
+      plot
+      video
+      movieID
+      movie {
+        id
+        title
+        year
+        numberOfSeasons
+        poster
+        plot
+        cast
+        creator
+        video
+        trailer
+        categoryID
+        seasons {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateDownload = /* GraphQL */ `
+  subscription OnUpdateDownload {
+    onUpdateDownload {
+      id
+      title
+      poster
+      duration
+      plot
+      video
+      movieID
+      movie {
+        id
+        title
+        year
+        numberOfSeasons
+        poster
+        plot
+        cast
+        creator
+        video
+        trailer
+        categoryID
+        seasons {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteDownload = /* GraphQL */ `
+  subscription OnDeleteDownload {
+    onDeleteDownload {
+      id
+      title
+      poster
+      duration
+      plot
+      video
+      movieID
+      movie {
+        id
+        title
+        year
+        numberOfSeasons
+        poster
+        plot
+        cast
+        creator
+        video
+        trailer
+        categoryID
+        seasons {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateMyList = /* GraphQL */ `
+  subscription OnCreateMyList {
+    onCreateMyList {
+      id
+      title
+      poster
+      duration
+      plot
+      video
+      movieID
+      movie {
+        id
+        title
+        year
+        numberOfSeasons
+        poster
+        plot
+        cast
+        creator
+        video
+        trailer
+        categoryID
+        seasons {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateMyList = /* GraphQL */ `
+  subscription OnUpdateMyList {
+    onUpdateMyList {
+      id
+      title
+      poster
+      duration
+      plot
+      video
+      movieID
+      movie {
+        id
+        title
+        year
+        numberOfSeasons
+        poster
+        plot
+        cast
+        creator
+        video
+        trailer
+        categoryID
+        seasons {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteMyList = /* GraphQL */ `
+  subscription OnDeleteMyList {
+    onDeleteMyList {
+      id
+      title
+      poster
+      duration
+      plot
+      video
+      movieID
+      movie {
+        id
+        title
+        year
+        numberOfSeasons
+        poster
+        plot
+        cast
+        creator
+        video
+        trailer
+        categoryID
+        seasons {
           nextToken
           startedAt
         }

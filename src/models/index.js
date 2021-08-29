@@ -4,11 +4,13 @@ import { schema } from './schema';
 
 
 
-const { Category, Movie, Season, Episode } = initSchema(schema);
+const { Category, Movie, Season, Episode, Download, MyList } = initSchema(schema);
 
 export {
   Category,
   Movie,
   Season,
-  Episode
+  Episode,
+  Download,
+  MyList
 };

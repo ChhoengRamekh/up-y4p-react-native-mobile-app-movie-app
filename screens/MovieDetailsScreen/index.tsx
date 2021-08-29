@@ -42,7 +42,7 @@ const MovieDetailsScreen = () => {
     };
     fetchMovie();
   }, []);
-  console.log("fetch movie=====", currentSeason);
+  // console.log("fetch movie=====", currentSeason);
 
   useEffect(() => {
     if (!movie) {
@@ -54,6 +54,15 @@ const MovieDetailsScreen = () => {
       );
       setSeasons(movieSeasons);
       setCurrentSeason(movieSeasons[0]);
+
+      if(!currentSeason) {
+        const notCurrentEpisode = {
+          poster: movie.poster,
+          video: movie.video
+        }
+        // console.log(notCurrentEpisode, 'here is not current ===================')
+        setCurrentEpisode(notCurrentEpisode)
+      }
     };
     fetchSeasons();
   }, [movie]);

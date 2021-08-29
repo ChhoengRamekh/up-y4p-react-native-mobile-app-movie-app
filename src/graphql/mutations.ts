@@ -20,6 +20,8 @@ export const createCategory = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -56,6 +58,8 @@ export const updateCategory = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -92,6 +96,8 @@ export const deleteCategory = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -124,6 +130,8 @@ export const createMovie = /* GraphQL */ `
       plot
       cast
       creator
+      video
+      trailer
       categoryID
       seasons {
         items {
@@ -161,6 +169,8 @@ export const updateMovie = /* GraphQL */ `
       plot
       cast
       creator
+      video
+      trailer
       categoryID
       seasons {
         items {
@@ -198,6 +208,8 @@ export const deleteMovie = /* GraphQL */ `
       plot
       cast
       creator
+      video
+      trailer
       categoryID
       seasons {
         items {
@@ -239,6 +251,8 @@ export const createSeason = /* GraphQL */ `
         plot
         cast
         creator
+        video
+        trailer
         categoryID
         seasons {
           nextToken
@@ -294,6 +308,8 @@ export const updateSeason = /* GraphQL */ `
         plot
         cast
         creator
+        video
+        trailer
         categoryID
         seasons {
           nextToken
@@ -349,6 +365,8 @@ export const deleteSeason = /* GraphQL */ `
         plot
         cast
         creator
+        video
+        trailer
         categoryID
         seasons {
           nextToken
@@ -412,6 +430,8 @@ export const createEpisode = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -463,6 +483,8 @@ export const updateEpisode = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -514,6 +536,8 @@ export const deleteEpisode = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -522,6 +546,264 @@ export const deleteEpisode = /* GraphQL */ `
           updatedAt
         }
         episodes {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createDownload = /* GraphQL */ `
+  mutation CreateDownload(
+    $input: CreateDownloadInput!
+    $condition: ModelDownloadConditionInput
+  ) {
+    createDownload(input: $input, condition: $condition) {
+      id
+      title
+      poster
+      duration
+      plot
+      video
+      movieID
+      movie {
+        id
+        title
+        year
+        numberOfSeasons
+        poster
+        plot
+        cast
+        creator
+        video
+        trailer
+        categoryID
+        seasons {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateDownload = /* GraphQL */ `
+  mutation UpdateDownload(
+    $input: UpdateDownloadInput!
+    $condition: ModelDownloadConditionInput
+  ) {
+    updateDownload(input: $input, condition: $condition) {
+      id
+      title
+      poster
+      duration
+      plot
+      video
+      movieID
+      movie {
+        id
+        title
+        year
+        numberOfSeasons
+        poster
+        plot
+        cast
+        creator
+        video
+        trailer
+        categoryID
+        seasons {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteDownload = /* GraphQL */ `
+  mutation DeleteDownload(
+    $input: DeleteDownloadInput!
+    $condition: ModelDownloadConditionInput
+  ) {
+    deleteDownload(input: $input, condition: $condition) {
+      id
+      title
+      poster
+      duration
+      plot
+      video
+      movieID
+      movie {
+        id
+        title
+        year
+        numberOfSeasons
+        poster
+        plot
+        cast
+        creator
+        video
+        trailer
+        categoryID
+        seasons {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createMyList = /* GraphQL */ `
+  mutation CreateMyList(
+    $input: CreateMyListInput!
+    $condition: ModelMyListConditionInput
+  ) {
+    createMyList(input: $input, condition: $condition) {
+      id
+      title
+      poster
+      duration
+      plot
+      video
+      movieID
+      movie {
+        id
+        title
+        year
+        numberOfSeasons
+        poster
+        plot
+        cast
+        creator
+        video
+        trailer
+        categoryID
+        seasons {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateMyList = /* GraphQL */ `
+  mutation UpdateMyList(
+    $input: UpdateMyListInput!
+    $condition: ModelMyListConditionInput
+  ) {
+    updateMyList(input: $input, condition: $condition) {
+      id
+      title
+      poster
+      duration
+      plot
+      video
+      movieID
+      movie {
+        id
+        title
+        year
+        numberOfSeasons
+        poster
+        plot
+        cast
+        creator
+        video
+        trailer
+        categoryID
+        seasons {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteMyList = /* GraphQL */ `
+  mutation DeleteMyList(
+    $input: DeleteMyListInput!
+    $condition: ModelMyListConditionInput
+  ) {
+    deleteMyList(input: $input, condition: $condition) {
+      id
+      title
+      poster
+      duration
+      plot
+      video
+      movieID
+      movie {
+        id
+        title
+        year
+        numberOfSeasons
+        poster
+        plot
+        cast
+        creator
+        video
+        trailer
+        categoryID
+        seasons {
           nextToken
           startedAt
         }

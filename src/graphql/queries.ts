@@ -48,6 +48,8 @@ export const getCategory = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -113,6 +115,8 @@ export const syncMovies = /* GraphQL */ `
         plot
         cast
         creator
+        video
+        trailer
         categoryID
         seasons {
           nextToken
@@ -140,6 +144,8 @@ export const getMovie = /* GraphQL */ `
       plot
       cast
       creator
+      video
+      trailer
       categoryID
       seasons {
         items {
@@ -179,6 +185,8 @@ export const listMovies = /* GraphQL */ `
         plot
         cast
         creator
+        video
+        trailer
         categoryID
         seasons {
           nextToken
@@ -221,6 +229,8 @@ export const syncSeasons = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -258,6 +268,8 @@ export const getSeason = /* GraphQL */ `
         plot
         cast
         creator
+        video
+        trailer
         categoryID
         seasons {
           nextToken
@@ -315,6 +327,8 @@ export const listSeasons = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -402,6 +416,8 @@ export const getEpisode = /* GraphQL */ `
           plot
           cast
           creator
+          video
+          trailer
           categoryID
           _version
           _deleted
@@ -446,6 +462,274 @@ export const listEpisodes = /* GraphQL */ `
           id
           name
           movieID
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncDownloads = /* GraphQL */ `
+  query SyncDownloads(
+    $filter: ModelDownloadFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncDownloads(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        title
+        poster
+        duration
+        plot
+        video
+        movieID
+        movie {
+          id
+          title
+          year
+          numberOfSeasons
+          poster
+          plot
+          cast
+          creator
+          video
+          trailer
+          categoryID
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getDownload = /* GraphQL */ `
+  query GetDownload($id: ID!) {
+    getDownload(id: $id) {
+      id
+      title
+      poster
+      duration
+      plot
+      video
+      movieID
+      movie {
+        id
+        title
+        year
+        numberOfSeasons
+        poster
+        plot
+        cast
+        creator
+        video
+        trailer
+        categoryID
+        seasons {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listDownloads = /* GraphQL */ `
+  query ListDownloads(
+    $filter: ModelDownloadFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listDownloads(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        title
+        poster
+        duration
+        plot
+        video
+        movieID
+        movie {
+          id
+          title
+          year
+          numberOfSeasons
+          poster
+          plot
+          cast
+          creator
+          video
+          trailer
+          categoryID
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncMyLists = /* GraphQL */ `
+  query SyncMyLists(
+    $filter: ModelMyListFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncMyLists(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        title
+        poster
+        duration
+        plot
+        video
+        movieID
+        movie {
+          id
+          title
+          year
+          numberOfSeasons
+          poster
+          plot
+          cast
+          creator
+          video
+          trailer
+          categoryID
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getMyList = /* GraphQL */ `
+  query GetMyList($id: ID!) {
+    getMyList(id: $id) {
+      id
+      title
+      poster
+      duration
+      plot
+      video
+      movieID
+      movie {
+        id
+        title
+        year
+        numberOfSeasons
+        poster
+        plot
+        cast
+        creator
+        video
+        trailer
+        categoryID
+        seasons {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listMyLists = /* GraphQL */ `
+  query ListMyLists(
+    $filter: ModelMyListFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listMyLists(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        title
+        poster
+        duration
+        plot
+        video
+        movieID
+        movie {
+          id
+          title
+          year
+          numberOfSeasons
+          poster
+          plot
+          cast
+          creator
+          video
+          trailer
+          categoryID
           _version
           _deleted
           _lastChangedAt

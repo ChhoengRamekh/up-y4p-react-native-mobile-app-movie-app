@@ -27,7 +27,7 @@
         "IdentityPoolName": "movies24c98e3ba8_identitypool_c98e3ba8__dev",
         "UserPoolName": "movies24c98e3ba8_userpool_c98e3ba8"
       },
-      "lastPushTimeStamp": "2021-08-27T18:44:11.937Z",
+      "lastPushTimeStamp": "2021-08-29T08:59:30.702Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-movies24-dev-213850-deployment/amplify-cfn-templates/auth/movies24c98e3ba8-cloudformation-template.yml",
         "logicalId": "authmovies24c98e3ba8"
@@ -46,45 +46,32 @@
               "userPoolId": "authmovies24c98e3ba8"
             }
           },
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "API_KEY",
-              "apiKeyConfig": {
-                "apiKeyExpirationDays": 30,
-                "description": "api key description"
-              }
-            },
-            {
-              "authenticationType": "AWS_IAM"
-            }
-          ]
+          "additionalAuthenticationProviders": []
         },
-        "GraphQLAPIIdOutput": "x2g2bsseobdmplpgph2gmsukda",
-        "GraphQLAPIEndpointOutput": "https://yghea6lgtjh4noiwpke6ern5cq.appsync-api.us-east-1.amazonaws.com/graphql",
-        "GraphQLAPIKeyOutput": "da2-l3e4kijqlzbdhkeh67ru56ce7u"
+        "GraphQLAPIIdOutput": "wudb5jjprnfsnmvtxn6ehydnka",
+        "GraphQLAPIEndpointOutput": "https://hyk7tgc4kzgljaag6apuikkpom.appsync-api.us-east-1.amazonaws.com/graphql"
       },
-      "lastPushTimeStamp": "2021-08-27T18:44:17.079Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-movies24-dev-213850-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apimovies24"
       },
-      "lastPushDirHash": "gnkwX1mbd92SU4iDEhejO2kG8Fg="
+      "lastPushTimeStamp": "2021-08-29T08:59:38.272Z",
+      "lastPushDirHash": "lafEJet41rszDflG7+RKxLviVCo="
     }
   },
   "storage": {
     "movie24media": {
       "service": "S3",
       "providerPlugin": "awscloudformation",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-movies24-dev-213850-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
-        "logicalId": "storagemovie24media"
-      },
-      "lastPushTimeStamp": "2021-08-27T18:44:17.079Z",
       "output": {
         "BucketName": "movies24244a06a42ed74216adb3f20b5e610978213850-dev",
         "Region": "us-east-1"
       },
-      "lastPushDirHash": "LYpXr4e2XtRbd/GHjP2RuRkxyCE="
+      "lastPushTimeStamp": "2021-08-29T08:59:30.711Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-movies24-dev-213850-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+        "logicalId": "storagemovie24media"
+      }
     }
   }
 }

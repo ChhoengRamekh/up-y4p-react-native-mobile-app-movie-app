@@ -16,6 +16,8 @@ type Movie @model
   plot: String
   cast: String
   creator: String
+  video: String
+  trailer: String
 
   categoryID: ID!
   seasons: [Season] @connection(keyName: "byMovie", fields: ["id"])
@@ -46,3 +48,31 @@ type Episode @model
   seasonID: ID!
   season: Season @connection(fields: ["seasonID"])
 } 
+
+type Download @model 
+@key(name: "byMovie", fields: ["movieID"])
+{
+  id: ID!
+  title: String!
+  poster: String!
+  duration: String!
+  plot: String
+  video: String!
+
+  movieID: ID!
+  movie: Movie @connection(fields: ["movieID"])
+} 
+
+type MyList @model 
+@key(name: "byMovie", fields: ["movieID"])
+{
+  id: ID!
+  title: String!
+  poster: String!
+  duration: String!
+  plot: String
+  video: String!
+
+  movieID: ID!
+  movie: Movie @connection(fields: ["movieID"])
+}

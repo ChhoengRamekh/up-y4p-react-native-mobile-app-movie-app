@@ -20,6 +20,14 @@ type EpisodeMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+type DownloadMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type MyListMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 export declare class Category {
   readonly id: string;
   readonly title: string;
@@ -39,6 +47,8 @@ export declare class Movie {
   readonly plot?: string;
   readonly cast?: string;
   readonly creator?: string;
+  readonly video?: string;
+  readonly trailer?: string;
   readonly categoryID: string;
   readonly seasons?: (Season | null)[];
   readonly createdAt?: string;
@@ -70,4 +80,32 @@ export declare class Episode {
   readonly updatedAt?: string;
   constructor(init: ModelInit<Episode, EpisodeMetaData>);
   static copyOf(source: Episode, mutator: (draft: MutableModel<Episode, EpisodeMetaData>) => MutableModel<Episode, EpisodeMetaData> | void): Episode;
+}
+
+export declare class Download {
+  readonly id: string;
+  readonly title: string;
+  readonly poster: string;
+  readonly duration: string;
+  readonly plot?: string;
+  readonly video: string;
+  readonly movie?: Movie;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<Download, DownloadMetaData>);
+  static copyOf(source: Download, mutator: (draft: MutableModel<Download, DownloadMetaData>) => MutableModel<Download, DownloadMetaData> | void): Download;
+}
+
+export declare class MyList {
+  readonly id: string;
+  readonly title: string;
+  readonly poster: string;
+  readonly duration: string;
+  readonly plot?: string;
+  readonly video: string;
+  readonly movie?: Movie;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<MyList, MyListMetaData>);
+  static copyOf(source: MyList, mutator: (draft: MutableModel<MyList, MyListMetaData>) => MutableModel<MyList, MyListMetaData> | void): MyList;
 }
