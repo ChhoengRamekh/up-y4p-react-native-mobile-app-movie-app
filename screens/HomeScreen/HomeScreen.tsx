@@ -15,7 +15,6 @@ const HomeScreen = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       setCategories(await DataStore.query(Category));
-      console.log(categories, 'here is categories======o-09-090-90')
     };
     fetchCategories();
   }, []);
