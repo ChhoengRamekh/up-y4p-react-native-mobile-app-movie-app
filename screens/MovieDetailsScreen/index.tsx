@@ -1,5 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Image, Pressable, FlatList, ActivityIndicator } from "react-native";
+import React, { useEffect, useState, useRef } from "react";
+import {
+  Image,
+  Pressable,
+  FlatList,
+  ActivityIndicator,
+  SafeAreaView,
+  Button
+} from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { View, Text } from "../../components/Themed";
 import styles from "./styles";
@@ -7,6 +14,7 @@ import { useRoute } from "@react-navigation/native";
 import movie from "../../assets/data/movie";
 import { DataStore } from "@aws-amplify/datastore";
 import { Movie, Season, Episode } from "../../src/models";
+import ReactNativePickerModule from "react-native-picker-module";
 
 import {
   MaterialIcons,
@@ -36,6 +44,10 @@ const MovieDetailsScreen = () => {
   const route = useRoute();
   const seasonNames = seasons ? seasons.map((season) => season.name) : [];
 
+  const pickerRef = useRef();
+  const [value, setValue] = useState();
+  const dataset_1 = [1, 2, "Java", "Kotlin", "C++", "C#", "PHP"];
+
   useEffect(() => {
     const fetchMovie = async () => {
       setMovie(await DataStore.query(Movie, route?.params?.id));
@@ -53,13 +65,14 @@ const MovieDetailsScreen = () => {
       );
       setSeasons(movieSeasons);
       setCurrentSeason(movieSeasons[0]);
+      // console.log('start=====', currentSeason.name, 'her is current season')
 
-      if(!currentSeason) {
+      if (!currentSeason) {
         const notCurrentEpisode = {
           poster: movie.poster,
-          video: movie.video
-        }
-        setCurrentEpisode(notCurrentEpisode)
+          video: movie.video,
+        };
+        setCurrentEpisode(notCurrentEpisode);
       }
     };
     fetchSeasons();
@@ -79,6 +92,11 @@ const MovieDetailsScreen = () => {
 
     fetchEpisodes();
   }, [currentSeason]);
+
+  const setSeasonOnPickerChange = (value) => {
+    const seasonIndex = seasons.findIndex(s => s.name == value)
+    setCurrentSeason(seasons[seasonIndex])
+  }
 
   if (!movie) {
     return <ActivityIndicator />;
@@ -139,12 +157,49 @@ const MovieDetailsScreen = () => {
                 <Text style={{ color: "darkgrey" }}>Share</Text>
               </View>
             </View>
-
-            {currentSeason && (
+            { currentSeason && (
+              <>
+              <SafeAreaView>
+                <Button
+                  title={currentSeason.name}
+                  onPress={() => pickerRef.current.show()}
+                />
+              </SafeAreaView>
+              <ReactNativePickerModule
+                pickerRef={pickerRef}
+                value={currentSeason.name}
+                title={"Select Season"}
+                items={seasonNames}
+                titleStyle={{ color: "white" }}
+                itemStyle={{ color: "white" }}
+                selectedColor="#FC0"
+                confirmButtonEnabledTextStyle={{ color: "white" }}
+                confirmButtonDisabledTextStyle={{ color: "grey" }}
+                cancelButtonTextStyle={{ color: "white" }}
+                confirmButtonStyle={{
+                  backgroundColor: "rgba(0,0,0,1)",
+                }}
+                cancelButtonStyle={{
+                  backgroundColor: "rgba(0,0,0,1)",
+                }}
+                contentContainerStyle={{
+                  backgroundColor: "rgba(0,0,0,1)",
+                }}
+                onValueChange={(value) => {
+                  // console.log("season: ", value);
+                  setSeasonOnPickerChange(value)
+                  // setCurrentSeason(seasons[1]);
+                  // setValue('here is selected', seasons[0]);
+                }}
+              />
+              </>
+            )}
+            
+            {/* {currentSeason && (
               <Picker
                 selectedValue={currentSeason.name}
                 onValueChange={(itemValue, itemIndex) => {
-                  setCurrentSeason(seasons[itemIndex]);
+                  // setCurrentSeason(seasons[itemIndex]);
                 }}
                 style={{ color: "white", width: 130 }}
                 itemStyle={{ backgroundColor: "white" }}
@@ -158,7 +213,7 @@ const MovieDetailsScreen = () => {
                   />
                 ))}
               </Picker>
-            )}
+            )} */}
           </View>
         }
       />
