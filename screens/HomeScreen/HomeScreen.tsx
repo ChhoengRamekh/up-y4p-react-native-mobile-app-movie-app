@@ -22,6 +22,7 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <FlatList
         data={categories}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item }) => <HomeCategory category={item} />}
       />
     </View>

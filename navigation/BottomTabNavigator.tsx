@@ -116,7 +116,7 @@ function SearchNavigator() {
       <SearchStack.Screen
         name="Search"
         component={SearchScreen}
-        options={{ headerTitle: "Search Movie" }}
+        options={{ headerTitle: "Search" }}
       />
     </SearchStack.Navigator>
   );
@@ -130,7 +130,7 @@ function DownloadNavigator() {
       <DownloadStack.Screen
         name="Search"
         component={DownloadScreen}
-        options={{ headerTitle: "Search Movie" }}
+        options={{ headerTitle: "Downloads" }}
       />
     </DownloadStack.Navigator>
   );
