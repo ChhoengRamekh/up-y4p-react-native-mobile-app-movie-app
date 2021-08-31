@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from "react";
 import {
   SafeAreaView,
   ScrollView,
@@ -6,29 +6,39 @@ import {
   Text,
   TextInput,
   View,
-} from 'react-native';
-// import MediaResults from '../components/MediaResults';
-import Colors from '../styles/colors';
-import {globalStyle} from '../styles/global';
-import {typography} from '../styles/typography';
-// import {SearchResult} from '../types/Search.type';
-// import {Trending} from '../types/Trending.type';
-// import {getSearch, getTrending} from '../util/api';
-import {useAsync} from '../util/useAsync';
+  FlatList,
+} from "react-native";
+import Colors from "../styles/colors";
+import { globalStyle } from "../styles/global";
+import { typography } from "../styles/typography";
+import { useAsync } from "../util/useAsync";
+import SearchItem from "../components/SearchItems";
+import { Movie } from "../src/models";
+import { DataStore } from "@aws-amplify/datastore";
 
 const Search = () => {
-  const [searchText, setSearchText] = React.useState('');
-  const {data, error, run} = useAsync<SearchResult[] | Trending[]>([]);
+  const [searchText, setSearchText] = React.useState("");
+  // const {data, error, run} = useAsync<SearchResult[] | Trending[]>([]);
+  const [movie, setMovie] = useState<Movie[]>([]);
+
+  // useEffect(() => {
+  //   if (searchText) {
+  //     // run(getSearch(searchText));
+  //   } else {
+  //     // run(getTrending());
+  //   }
+  // }, [searchText, run]);
 
   useEffect(() => {
-    if (searchText) {
-      // run(getSearch(searchText));
-    } else {
-      // run(getTrending());
-    }
-  }, [searchText, run]);
+    const fetchMovie = async () => {
+      const allMovie = await DataStore.query(Movie);
+      setMovie(allMovie);
+      // console.log(movie, "her is movie =======");
+    };
+    fetchMovie();
+  }, []);
 
-  const label = searchText ? 'Movies & TV Shows' : 'Top Searches';
+  const label = searchText ? "Movies & TV Shows" : "Top Searches";
 
   return (
     <View style={styles.searchContainer}>
@@ -44,10 +54,24 @@ const Search = () => {
             style={styles.textInput}
           />
         </View>
-        <ScrollView>
+        <Text style={styles.label}>{label}</Text>
+        <ScrollView
+        showsVerticalScrollIndicator={false}
+        >
           <View style={globalStyle.flex}>
-            <Text style={styles.label}>{label}</Text>
-            {/* <MediaResults data={data} error={error} /> */}
+
+            <FlatList
+              data={movie}
+              style={{ marginBottom: 250 }}
+              showsVerticalScrollIndicator={false}
+              renderItem={({ item }) => (
+                <SearchItem
+                  movie={item}
+                  // onPress={setCurrentEpisode}
+                  style={{ marginBottom: 250 }}
+                />
+              )}
+            />
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -57,7 +81,7 @@ const Search = () => {
 
 Search.options = {
   bottomTab: {
-    text: 'Search',
+    text: "Search",
   },
 };
 

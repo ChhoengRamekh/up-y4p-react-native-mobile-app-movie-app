@@ -195,34 +195,11 @@ const MovieDetailsScreen = ({ navigation }) => {
                     backgroundColor: "rgba(0,0,0,1)",
                   }}
                   onValueChange={(value) => {
-                    // console.log("season: ", value);
                     setSeasonOnPickerChange(value);
-                    // setCurrentSeason(seasons[1]);
-                    // setValue('here is selected', seasons[0]);
                   }}
                 />
               </>
             )}
-
-            {/* {currentSeason && (
-              <Picker
-                selectedValue={currentSeason.name}
-                onValueChange={(itemValue, itemIndex) => {
-                  // setCurrentSeason(seasons[itemIndex]);
-                }}
-                style={{ color: "white", width: 130 }}
-                itemStyle={{ backgroundColor: "white" }}
-                dropdownIconColor={"white"}
-              >
-                {seasonNames.map((seasonName) => (
-                  <Picker.Item
-                    label={seasonName}
-                    value={seasonName}
-                    key={seasonName}
-                  />
-                ))}
-              </Picker>
-            )} */}
           </View>
         }
       />
