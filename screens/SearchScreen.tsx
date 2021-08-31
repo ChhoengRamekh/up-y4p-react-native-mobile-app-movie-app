@@ -21,22 +21,25 @@ const Search = () => {
   // const {data, error, run} = useAsync<SearchResult[] | Trending[]>([]);
   const [movie, setMovie] = useState<Movie[]>([]);
 
-  // useEffect(() => {
-  //   if (searchText) {
-  //     // run(getSearch(searchText));
-  //   } else {
-  //     // run(getTrending());
-  //   }
-  // }, [searchText, run]);
-
   useEffect(() => {
-    const fetchMovie = async () => {
-      const allMovie = await DataStore.query(Movie);
-      setMovie(allMovie);
-      // console.log(movie, "her is movie =======");
-    };
-    fetchMovie();
-  }, []);
+    if (searchText) {
+      // run(getSearch(searchText));
+      console.log(searchText, '{}')
+      getSearchMovie(searchText)
+    } else {
+      fetchMovie();
+    }
+  }, [searchText]);
+
+  const getSearchMovie = async (searchText) => {
+    const allMovie = await DataStore.query(Movie, c => c.title('beginsWith', searchText).title('contains', searchText));
+    setMovie(allMovie);
+    console.log('Search Result:', allMovie);
+  };
+  const fetchMovie = async () => {
+    const allMovie = await DataStore.query(Movie);
+    setMovie(allMovie);
+  };
 
   const label = searchText ? "Movies & TV Shows" : "Top Searches";
 
