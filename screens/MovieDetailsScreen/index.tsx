@@ -5,7 +5,7 @@ import {
   FlatList,
   ActivityIndicator,
   SafeAreaView,
-  Button
+  Button,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { View, Text } from "../../components/Themed";
@@ -15,6 +15,7 @@ import movie from "../../assets/data/movie";
 import { DataStore } from "@aws-amplify/datastore";
 import { Movie, Season, Episode } from "../../src/models";
 import ReactNativePickerModule from "react-native-picker-module";
+import * as ScreenOrientation from "expo-screen-orientation";
 
 import {
   MaterialIcons,
@@ -30,7 +31,7 @@ import { listSeasons } from "../../src/graphql/queries";
 
 const firstEpisode = movie.seasons.items[0];
 const firstSeason = movie.seasons.items[0];
-const MovieDetailsScreen = () => {
+const MovieDetailsScreen = ({ navigation }) => {
   const [currentSeason, setCurrentSeason] = useState<Season | undefined>(
     undefined
   );
@@ -40,14 +41,12 @@ const MovieDetailsScreen = () => {
   const [movie, setMovie] = useState<Movie | undefined>(undefined);
   const [seasons, setSeasons] = useState<Season | undefined>(undefined);
   const [episodes, setEpisodes] = useState<Episode | undefined>(undefined);
+  const [videoPlay, setVideoPlay] = useState(true);
 
   const route = useRoute();
   const seasonNames = seasons ? seasons.map((season) => season.name) : [];
 
   const pickerRef = useRef();
-  const [value, setValue] = useState();
-  const dataset_1 = [1, 2, "Java", "Kotlin", "C++", "C#", "PHP"];
-
   useEffect(() => {
     const fetchMovie = async () => {
       setMovie(await DataStore.query(Movie, route?.params?.id));
@@ -94,8 +93,15 @@ const MovieDetailsScreen = () => {
   }, [currentSeason]);
 
   const setSeasonOnPickerChange = (value) => {
-    const seasonIndex = seasons.findIndex(s => s.name == value)
-    setCurrentSeason(seasons[seasonIndex])
+    const seasonIndex = seasons.findIndex((s) => s.name == value);
+    setCurrentSeason(seasons[seasonIndex]);
+  };
+
+  const playVideoFullScreen = () => {
+    setVideoPlay(false)
+    navigation.navigate("FullScreenPlayer", {
+      uri: currentEpisode?.video
+    })
   }
 
   if (!movie) {
@@ -103,7 +109,7 @@ const MovieDetailsScreen = () => {
   }
   return (
     <View>
-      {currentEpisode && <VideoPlayer episode={currentEpisode} />}
+      {currentEpisode && <VideoPlayer episode={currentEpisode} isPlaying={videoPlay} />}
 
       <FlatList
         data={episodes}
@@ -127,7 +133,10 @@ const MovieDetailsScreen = () => {
               <Text style={styles.year}>{movie.numberOfSeasons} Seasons</Text>
               <MaterialIcons name="hd" size={24} color="white" />
             </View>
-            <Pressable onPress={() => {}} style={styles.playButton}>
+            <Pressable
+              onPress={() => playVideoFullScreen()}
+              style={styles.playButton}
+            >
               <Text style={styles.playButtonText}>
                 <Entypo name="controller-play" size={16} color="black" />
                 Play
@@ -157,44 +166,44 @@ const MovieDetailsScreen = () => {
                 <Text style={{ color: "darkgrey" }}>Share</Text>
               </View>
             </View>
-            { currentSeason && (
+            {currentSeason && (
               <>
-              <SafeAreaView>
-                <Button
-                  title={currentSeason.name}
-                  onPress={() => pickerRef.current.show()}
+                <SafeAreaView>
+                  <Button
+                    title={currentSeason.name}
+                    onPress={() => pickerRef.current.show()}
+                  />
+                </SafeAreaView>
+                <ReactNativePickerModule
+                  pickerRef={pickerRef}
+                  value={currentSeason.name}
+                  title={"Select Season"}
+                  items={seasonNames}
+                  titleStyle={{ color: "white" }}
+                  itemStyle={{ color: "white" }}
+                  selectedColor="#FC0"
+                  confirmButtonEnabledTextStyle={{ color: "white" }}
+                  confirmButtonDisabledTextStyle={{ color: "grey" }}
+                  cancelButtonTextStyle={{ color: "white" }}
+                  confirmButtonStyle={{
+                    backgroundColor: "rgba(0,0,0,1)",
+                  }}
+                  cancelButtonStyle={{
+                    backgroundColor: "rgba(0,0,0,1)",
+                  }}
+                  contentContainerStyle={{
+                    backgroundColor: "rgba(0,0,0,1)",
+                  }}
+                  onValueChange={(value) => {
+                    // console.log("season: ", value);
+                    setSeasonOnPickerChange(value);
+                    // setCurrentSeason(seasons[1]);
+                    // setValue('here is selected', seasons[0]);
+                  }}
                 />
-              </SafeAreaView>
-              <ReactNativePickerModule
-                pickerRef={pickerRef}
-                value={currentSeason.name}
-                title={"Select Season"}
-                items={seasonNames}
-                titleStyle={{ color: "white" }}
-                itemStyle={{ color: "white" }}
-                selectedColor="#FC0"
-                confirmButtonEnabledTextStyle={{ color: "white" }}
-                confirmButtonDisabledTextStyle={{ color: "grey" }}
-                cancelButtonTextStyle={{ color: "white" }}
-                confirmButtonStyle={{
-                  backgroundColor: "rgba(0,0,0,1)",
-                }}
-                cancelButtonStyle={{
-                  backgroundColor: "rgba(0,0,0,1)",
-                }}
-                contentContainerStyle={{
-                  backgroundColor: "rgba(0,0,0,1)",
-                }}
-                onValueChange={(value) => {
-                  // console.log("season: ", value);
-                  setSeasonOnPickerChange(value)
-                  // setCurrentSeason(seasons[1]);
-                  // setValue('here is selected', seasons[0]);
-                }}
-              />
               </>
             )}
-            
+
             {/* {currentSeason && (
               <Picker
                 selectedValue={currentSeason.name}
